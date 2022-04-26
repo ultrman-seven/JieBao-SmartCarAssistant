@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/drawable/green_button.xml" value="0.25833333333333336" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/drawable/jie_bao_button.xml" value="0.25833333333333336" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/drawable/jiebao_button.xml" value="0.25833333333333336" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/drawable/progress_background.xml" value="0.25833333333333336" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/activity_control_avtivity.xml" value="0.2421875" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/activity_main.xml" value="0.1609375" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/content_char.xml" value="0.4" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/content_data_receive.xml" value="0.176" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/item_spinner.xml" value="0.1609375" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/main_layout.xml" value="0.264" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/menu_main.xml" value="0.1609375" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/rxtx_test.xml" value="0.264" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/layout/status_main.xml" value="0.1609375" />
+        <entry key="..\:/Android/CH9141BLE/app/src/main/res/menu/menu_main.xml" value="0.1609375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

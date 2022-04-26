@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink">
+
+    <Button
+        android:id="@+id/go_to_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读写测试"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
+
+    <Button
+        android:id="@+id/go_to_pad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杰宝♂遥♂控♂器♂"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/go_to_test"
+        app:layout_constraintStart_toStartOf="@+id/go_to_test"
+        app:layout_constraintTop_toBottomOf="@+id/go_to_test"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <Button
+        android:id="@+id/go_to_scope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杰宝♂示♂波♂器♂"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/go_to_pad"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/go_to_pad"
+        app:layout_constraintTop_toBottomOf="@+id/go_to_pad"
+        app:layout_constraintVertical_bias="0.173" />
+
+    <Button
+        android:id="@+id/go_to_para"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杰宝♂调♂参♂数♂"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/go_to_scope"
+        app:layout_constraintTop_toBottomOf="@+id/go_to_scope"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <Button
+        android:id="@+id/go_to_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杰宝♂传♂图♂像♂"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/go_to_para"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/go_to_para"
+        app:layout_constraintTop_toBottomOf="@+id/go_to_para"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="400dp"
+        android:layout_height="194dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="蓝牙地址："
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <EditText
+                android:id="@+id/ble_add"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="203dp"
+                tools:layout_editor_absoluteY="48dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="服务："
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <EditText
+                android:id="@+id/ble_ser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="203dp"
+                tools:layout_editor_absoluteY="48dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="接收特征值："
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <EditText
+                android:id="@+id/ble_rx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="203dp"
+                tools:layout_editor_absoluteY="48dp" />
+        </TableRow>
+
+        <TableRow android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:text="发送特征值："
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <EditText
+                android:id="@+id/ble_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="203dp"
+                tools:layout_editor_absoluteY="48dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <ImageButton
+        android:id="@+id/sjjButton"
+        android:layout_width="280dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="60dp"
+
+        android:background="@drawable/jiebao_button"
+        android:src="@drawable/sjj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+
+    <ImageButton
+        android:id="@+id/sjjReButton"
+        android:layout_width="180dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="379dp"
+        android:background="@drawable/green_button"
+        android:src="@drawable/sjj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@+id/go_to_pic"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <ImageButton
+        android:id="@+id/sjjSmileButton"
+        android:layout_width="220dp"
+        android:layout_height="350dp"
+        android:background="@drawable/progress_background"
+        android:src="@drawable/smile"
+        app:layout_constraintBottom_toTopOf="@+id/sjjReButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/go_to_pic"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.586" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
