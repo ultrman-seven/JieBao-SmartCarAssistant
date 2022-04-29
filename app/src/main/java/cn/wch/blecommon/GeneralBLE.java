@@ -32,6 +32,8 @@ public class GeneralBLE extends BLEBaseActivity {
     protected String rx;
     protected String tx;
     protected BluetoothGattCharacteristic c;
+    protected boolean isConnected = false;
+    protected final String cmdStartEnd[] = {"97", "f0a5"};
 
     @Override
     protected void initWidget() {
@@ -67,6 +69,7 @@ public class GeneralBLE extends BLEBaseActivity {
     @Override
 
     protected void onConnectSuccess() {
+        isConnected = true;
     }
 
     @Override
@@ -110,11 +113,11 @@ public class GeneralBLE extends BLEBaseActivity {
         }
     }
 
-    protected void write(BluetoothGattCharacteristic characteristic,String data)
-    {
+    protected void write(BluetoothGattCharacteristic characteristic, String data) {
         byte d[] = FormatUtil.hexStringToBytes(data);
-        write(characteristic,d);
+        write(characteristic, d);
     }
+
     protected void write(BluetoothGattCharacteristic characteristic, byte[] data) {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
@@ -157,7 +160,8 @@ public class GeneralBLE extends BLEBaseActivity {
                 });
     }
 
-    protected void updateValueTextView(byte[] data){}
+    protected void updateValueTextView(byte[] data) {
+    }
 
     private void read(BluetoothGattCharacteristic characteristic) {
         Observable.create(new ObservableOnSubscribe<String>() {
@@ -208,12 +212,51 @@ public class GeneralBLE extends BLEBaseActivity {
         super.onBackPressed();
     }
 
-    protected void getConnect(){
+    protected void getConnect() {
         Intent i = getIntent();
         add = i.getStringExtra("address");
         ser = i.getStringExtra("service");
         rx = i.getStringExtra("rx");
         tx = i.getStringExtra("tx");
         connectBLE(add);
+    }
+
+    protected void sendCmd(String name) {
+        write(c, cmdStartEnd[0] + name + cmdStartEnd[1]);
+    }
+
+    protected void send8Cmd(String name, int val) {
+        write(c, cmdStartEnd[0] + name);
+        byte tmp[] = {(byte) val};
+        write(c, tmp);
+        write(c, cmdStartEnd[1]);
+    }
+
+    protected void send16Cmd(String name, int val) {
+        write(c, cmdStartEnd[0] + name);
+        write(c, int16ToByteArray(val));
+        write(c, cmdStartEnd[1]);
+    }
+
+    protected void send32Cmd(String name, int val) {
+        write(c, cmdStartEnd[0] + name);
+        write(c, int32ToByteArray(val));
+        write(c, cmdStartEnd[1]);
+    }
+
+    protected byte[] int16ToByteArray(int a) {
+        return new byte[]{
+                (byte) ((a >> 8) & 0xFF),
+                (byte) (a & 0xFF)
+        };
+    }
+
+    protected byte[] int32ToByteArray(int a) {
+        return new byte[]{
+                (byte) ((a >> 24) & 0xFF),
+                (byte) ((a >> 16) & 0xFF),
+                (byte) ((a >> 8) & 0xFF),
+                (byte) (a & 0xFF)
+        };
     }
 }

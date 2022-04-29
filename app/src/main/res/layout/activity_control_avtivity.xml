@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rocker="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,18 +8,87 @@
     android:rotation="0"
     tools:context=".ControlAvtivity">
 
-    <SeekBar
-        android:id="@+id/seekBar_angleModify"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="589dp"
-        android:layout_height="71dp"
-        android:max="90"
-        android:min="-90"
-        android:progress="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
+    <com.gcssloop.widget.RockerView
+        android:id="@+id/leftRocker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        rocker:callback_cycle="1000"
+        rocker:rocker_background="@drawable/sjj"
+        rocker:layout_constraintBottom_toBottomOf="parent"
+        rocker:layout_constraintEnd_toEndOf="parent"
+        rocker:layout_constraintHorizontal_bias="0.071"
+        rocker:layout_constraintStart_toStartOf="parent"
+        rocker:layout_constraintTop_toTopOf="parent"
+        rocker:layout_constraintVertical_bias="0.862" />
 
+    <com.gcssloop.widget.RockerView
+        android:id="@+id/rightRocker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        rocker:rocker_background="@drawable/sjj"
+        rocker:layout_constraintBottom_toBottomOf="parent"
+        rocker:layout_constraintEnd_toEndOf="parent"
+        rocker:layout_constraintHorizontal_bias="0.832"
+        rocker:layout_constraintStart_toEndOf="@+id/leftRocker"
+        rocker:layout_constraintTop_toTopOf="parent"
+        rocker:layout_constraintVertical_bias="0.862" />
+
+    <TextView
+        android:id="@+id/rockText"
+        android:layout_width="114dp"
+        android:layout_height="164dp"
+        android:text="TextView"
+        rocker:layout_constraintBottom_toBottomOf="parent"
+        rocker:layout_constraintEnd_toStartOf="@+id/rightRocker"
+        rocker:layout_constraintHorizontal_bias="0.0"
+        rocker:layout_constraintStart_toEndOf="@+id/leftRocker"
+        rocker:layout_constraintTop_toTopOf="parent"
+        rocker:layout_constraintVertical_bias="0.882" />
+
+    <TextView
+        android:id="@+id/rockText2"
+        android:layout_width="120dp"
+        android:layout_height="164dp"
+        android:text="TextView"
+        rocker:layout_constraintBottom_toBottomOf="parent"
+        rocker:layout_constraintEnd_toStartOf="@+id/rightRocker"
+        rocker:layout_constraintHorizontal_bias="1.0"
+        rocker:layout_constraintStart_toEndOf="@+id/leftRocker"
+        rocker:layout_constraintTop_toTopOf="parent"
+        rocker:layout_constraintVertical_bias="0.882" />
+
+    <Button
+        android:id="@+id/startRock"
+        android:layout_width="238dp"
+        android:layout_height="129dp"
+        android:background="@color/pink"
+        android:text="获取发送服务"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        rocker:layout_constraintBottom_toBottomOf="parent"
+        rocker:layout_constraintEnd_toEndOf="parent"
+        rocker:layout_constraintStart_toStartOf="parent"
+        rocker:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:layout_width="660dp"
+        android:layout_height="wrap_content"
+        rocker:layout_constraintBottom_toTopOf="@+id/startRock"
+        rocker:layout_constraintEnd_toEndOf="parent"
+        rocker:layout_constraintHorizontal_bias="0.5"
+        rocker:layout_constraintStart_toStartOf="parent"
+        rocker:layout_constraintTop_toTopOf="parent">
+
+        <SeekBar
+            android:id="@+id/seekBar_angle"
+            android:layout_width="642dp"
+            android:layout_height="45dp"
+            android:min="-900"
+            android:max="900"/>
+        <TextView
+            android:id="@+id/text_angle"
+            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:text="当前角度："/>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

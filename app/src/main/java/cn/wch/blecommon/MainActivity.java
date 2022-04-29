@@ -74,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private String sjjSaoWords[]= {
+            "让我康康你车做的怎么样了", "请学弟学妹吃饭",
+            "嘿嘿嘿", "是这样的", "504最帅",
+            "你想杰宝了吗", "今天杰宝泡学妹了吗",
+            "不做车就要被杰宝抓走哦", "我爱上别人了",
+            "哈斯哈斯", "爱情也是这样", "。。。"
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.main_layout);
@@ -150,10 +158,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         smile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"让我看看你车做的怎么样了",Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(MainActivity.this,sjjSaoWords[(int)(Math.random()*(sjjSaoWords.length-1))],Toast.LENGTH_SHORT).show();
             }
         });
         test.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +176,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gotoNextIntent(ControlAvtivity.class);
+            }
+        });
+        para.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoNextIntent(ParaActivity.class);
             }
         });
         super.onCreate(savedInstanceState);

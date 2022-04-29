@@ -26,6 +26,9 @@
             android:name=".GeneralBLE"
             android:exported="false" />
         <activity
+            android:name=".ParaActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestRxTx"
             android:exported="false" />
         <activity

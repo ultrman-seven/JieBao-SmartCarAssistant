@@ -40,7 +40,9 @@ public class TestRxTx extends GeneralBLE {
         t.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                write(getCurrentCharacteristic(ser, tx), "970301f0a5");
+//                write(getCurrentCharacteristic(ser, tx), "970301f0a5");
+                c = getCurrentCharacteristic(ser,tx);
+                sendCmd("00");
 //                writeData(c);
             }
         });
