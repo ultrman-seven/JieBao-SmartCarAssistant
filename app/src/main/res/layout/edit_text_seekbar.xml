@@ -11,18 +11,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kx:  " />
+            android:text="Kx:  "
+            android:id="@+id/unit_text"/>
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100" />
+            android:text="00"
+            android:id="@+id/unit_edit"/>
 
         <SeekBar
             android:layout_width="330dp"
             android:layout_height="45dp"
             android:max="50"
-            android:min="-50" />
+            android:min="-50"
+            android:id="@+id/unit_bar"/>
     </TableRow>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
