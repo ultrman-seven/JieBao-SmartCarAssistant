@@ -7,11 +7,18 @@ import android.widget.RadioGroup;
 
 public class ParaActivity extends GeneralBLE {
 
+    private pidUnit pid_angle;
+    private pidUnit pid_speed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getConnect();
         setContentView(R.layout.activity_para);
+        getConnect();
+        pid_angle = findViewById(R.id.pid_angle);
+        pid_speed = findViewById(R.id.pid_speed);
+        pid_angle.setName("角度环参数");
+        pid_speed.setName("速度环参数");
         RadioGroup modeSelect = findViewById(R.id.mode_group);
         modeSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -19,6 +26,7 @@ public class ParaActivity extends GeneralBLE {
 
             }
         });
+
 
         Button setPara = findViewById(R.id.button_para);
         setPara.setOnClickListener(new View.OnClickListener() {

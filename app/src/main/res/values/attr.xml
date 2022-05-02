@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="e_s">
+    <attr name="edit_txt" format="string"/>
+    <attr name="bar_val" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="pidUnit">
+        <attr name="pid_name" format="string"/>
+    </declare-styleable>
+</resources>
