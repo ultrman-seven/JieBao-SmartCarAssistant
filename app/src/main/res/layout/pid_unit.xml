@@ -17,16 +17,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/kp"
-            app:edit_txt="Kp"/>
+            app:edit_txt="Kp"
+            app:bit_num="0" />
 
         <cn.wch.blecommon.EditTextSeekbarUnit
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ki"/>
+            android:id="@+id/ki"
+            app:edit_txt="Ki"
+            app:bit_num="1"
+            app:max="150"
+            app:min="-150" />
 
         <cn.wch.blecommon.EditTextSeekbarUnit
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/kd"/>
+            android:id="@+id/kd"
+            app:edit_txt="Kd"
+            app:bit_num="1"
+            app:max="150"
+            app:min="-150"/>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

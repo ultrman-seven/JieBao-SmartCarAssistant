@@ -18,11 +18,8 @@ public class pidUnit extends ConstraintLayout {
         LayoutInflater.from(context).inflate(R.layout.pid_unit, this);
         t = findViewById(R.id.pid_name);
         p = findViewById(R.id.kp);
-//        p.setName("Kp");
         i = findViewById(R.id.ki);
-//        i.setName("Ki");
         d = findViewById(R.id.kd);
-//        d.setName("Kd");
     }
 
     public void getPara() {
