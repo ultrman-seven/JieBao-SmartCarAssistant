@@ -22,8 +22,9 @@ public class pidUnit extends ConstraintLayout {
         d = findViewById(R.id.kd);
     }
 
-    public void getPara() {
-
+    public int[] getPara() {
+        int r[]= {p.getVal(),i.getVal(),d.getVal()};
+        return r;
     }
 
     public void setName(String name)

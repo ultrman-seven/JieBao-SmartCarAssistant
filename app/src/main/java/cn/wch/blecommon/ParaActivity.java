@@ -34,9 +34,18 @@ public class ParaActivity extends GeneralBLE {
             public void onClick(View view) {
                 c = getCurrentCharacteristic(ser,tx);
                 write(c,cmdStartEnd[0]+"0400");
-                write(c,int16ToByteArray(10));
-                write(c,int16ToByteArray(-5));
-                write(c,int16ToByteArray(6));
+                for(int i:pid_angle.getPara())
+                    write(c,int16ToByteArray(i));
+                write(c,cmdStartEnd[1]);
+
+                write(c,cmdStartEnd[0]+"0401");
+                for(int i:pid_speed.getPara())
+                    write(c,int16ToByteArray(i));
+                write(c,cmdStartEnd[1]);
+
+                write(c,cmdStartEnd[0]+"0402");
+                for(int i:pid_speed.getPara())
+                    write(c,int16ToByteArray(i));
                 write(c,cmdStartEnd[1]);
             }
         });

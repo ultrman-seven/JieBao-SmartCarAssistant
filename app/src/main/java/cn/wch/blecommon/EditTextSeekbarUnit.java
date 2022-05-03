@@ -83,8 +83,6 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
     }
 
     public int getVal() {
-        int val;
-        val = bar.getProgress();
-        return val;
+        return bar.getProgress();
     }
 }
