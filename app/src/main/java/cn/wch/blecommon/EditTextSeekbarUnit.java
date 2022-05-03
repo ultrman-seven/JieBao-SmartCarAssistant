@@ -45,7 +45,7 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                editText.setText(String.valueOf(i/Math.pow(10,bit_count)));
+//                editText.setText(String.valueOf(i/Math.pow(10,bit_count)));
             }
 
             @Override
@@ -55,7 +55,7 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                editText.setText(String.valueOf(bar.getProgress()/Math.pow(10,bit_count)));
             }
         });
         editText.addTextChangedListener(new TextWatcher() {

@@ -3,7 +3,10 @@ package cn.wch.blecommon;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ParaActivity extends GeneralBLE {
 
@@ -23,7 +26,20 @@ public class ParaActivity extends GeneralBLE {
         modeSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
+                c = getCurrentCharacteristic(ser,tx);
+                switch (i) {
+                    case R.id.radioButton_angle:
+                        send8Cmd("03", 2);
+                        break;
+                    case R.id.radioButton_pwm:
+                        send8Cmd("03", 0);
+                        break;
+                    case R.id.radioButton_speed:
+                        send8Cmd("03", 1);
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
