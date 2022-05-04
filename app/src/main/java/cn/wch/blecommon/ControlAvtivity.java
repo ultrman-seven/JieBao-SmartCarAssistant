@@ -94,13 +94,13 @@ public class ControlAvtivity extends GeneralBLE {
                         textView.setText(String.format("left\nangle:%d\nlength:%.1f\nx:%.1f,y:%.1f", i1, v, x, y));
 
                         byte dat[] = {(byte) (y / 2)};
-                        write(c, cmdStartEnd[0] + cmdSpeed);
-                        write(c, dat);
-                        write(c, cmdStartEnd[1]);
+                        write( cmdStartEnd[0] + cmdSpeed);
+                        write( dat);
+                        write( cmdStartEnd[1]);
                         break;
                     case RockerView.EVENT_CLOCK:
                         if (left.getVisibility() == View.VISIBLE && v < 1) {
-                            write(c, cmdStartEnd[0] + cmdSpeed + "00" + cmdStartEnd[1]);
+                            write(cmdStartEnd[0] + cmdSpeed + "00" + cmdStartEnd[1]);
                         }
                         break;
                     default:
@@ -119,9 +119,9 @@ public class ControlAvtivity extends GeneralBLE {
                 byte dat[] = {(byte) (x / 2)};
                 if (i == RockerView.EVENT_ACTION) {
                     textView2.setText(String.format("right\nangle:%d\nlength:%.1f\nx:%.1f,y:%.1f", i1, v, x, y));
-                    write(c, cmdStartEnd[0] + cmdTurn);
-                    write(c, dat);
-                    write(c, cmdStartEnd[1]);
+                    write(cmdStartEnd[0] + cmdTurn);
+                    write( dat);
+                    write( cmdStartEnd[1]);
                 }
             }
         });

@@ -26,16 +26,15 @@ public class ParaActivity extends GeneralBLE {
         modeSelect.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                c = getCurrentCharacteristic(ser,tx);
                 switch (i) {
                     case R.id.radioButton_angle:
-                        send8Cmd("03", 2);
+                        send8Cmd(commands.Para_Adj, 2);
                         break;
                     case R.id.radioButton_pwm:
-                        send8Cmd("03", 0);
+                        send8Cmd(commands.Para_Adj, 0);
                         break;
                     case R.id.radioButton_speed:
-                        send8Cmd("03", 1);
+                        send8Cmd(commands.Para_Adj, 1);
                         break;
                     default:
                         break;
@@ -48,21 +47,20 @@ public class ParaActivity extends GeneralBLE {
         setPara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                c = getCurrentCharacteristic(ser,tx);
-                write(c,cmdStartEnd[0]+"0400");
+                write(cmdStartEnd[0]+"0400");
                 for(int i:pid_angle.getPara())
-                    write(c,int16ToByteArray(i));
-                write(c,cmdStartEnd[1]);
+                    write(int16ToByteArray(i));
+                write(cmdStartEnd[1]);
 
-                write(c,cmdStartEnd[0]+"0401");
+                write(cmdStartEnd[0]+"0401");
                 for(int i:pid_speed.getPara())
                     write(c,int16ToByteArray(i));
-                write(c,cmdStartEnd[1]);
+                write(cmdStartEnd[1]);
 
-                write(c,cmdStartEnd[0]+"0402");
+                write(cmdStartEnd[0]+"0402");
                 for(int i:pid_speed.getPara())
-                    write(c,int16ToByteArray(i));
-                write(c,cmdStartEnd[1]);
+                    write(int16ToByteArray(i));
+                write(cmdStartEnd[1]);
             }
         });
     }
