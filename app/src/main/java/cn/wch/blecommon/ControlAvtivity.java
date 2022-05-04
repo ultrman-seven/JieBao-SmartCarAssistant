@@ -58,7 +58,7 @@ public class ControlAvtivity extends GeneralBLE {
                     textAngle.setVisibility(View.VISIBLE);
                     c = getCurrentCharacteristic(ser, tx);
 //                    write(c, cmdStartEnd[0] + "0303" + cmdStartEnd[1]);
-                    send8Cmd("03",3);
+                    send8Cmd(commands.Set_Mode,3);
                 } else Toast.makeText(ControlAvtivity.this, "蓝牙未连接！！", Toast.LENGTH_SHORT).show();
             }
         });
@@ -68,7 +68,7 @@ public class ControlAvtivity extends GeneralBLE {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 double val = (double) i / 10;
                 textAngle.setText(String.format("当前平衡点角度：%.1f", val));
-
+                send8Cmd(commands.Set_Balance,i);
             }
 
             @Override
@@ -93,14 +93,16 @@ public class ControlAvtivity extends GeneralBLE {
                     case RockerView.EVENT_ACTION:
                         textView.setText(String.format("left\nangle:%d\nlength:%.1f\nx:%.1f,y:%.1f", i1, v, x, y));
 
-                        byte dat[] = {(byte) (y / 2)};
-                        write( cmdStartEnd[0] + cmdSpeed);
-                        write( dat);
-                        write( cmdStartEnd[1]);
+                        send8Cmd(commands.Set_Angle,(int)(y/2));
+//                        byte dat[] = {(byte) (y / 2)};
+//                        write( cmdStartEnd[0] + cmdSpeed);
+//                        write( dat);
+//                        write( cmdStartEnd[1]);
                         break;
                     case RockerView.EVENT_CLOCK:
                         if (left.getVisibility() == View.VISIBLE && v < 1) {
-                            write(cmdStartEnd[0] + cmdSpeed + "00" + cmdStartEnd[1]);
+//                            write(cmdStartEnd[0] + cmdSpeed + "00" + cmdStartEnd[1]);
+                            send8Cmd(commands.Set_Angle,0);
                         }
                         break;
                     default:
@@ -116,12 +118,13 @@ public class ControlAvtivity extends GeneralBLE {
                     v = 200;
                 double angle = Math.toRadians(i1);
                 double x = v * Math.cos(angle), y = v * Math.sin(angle);
-                byte dat[] = {(byte) (x / 2)};
+//                byte dat[] = {(byte) (x / 2)};
                 if (i == RockerView.EVENT_ACTION) {
                     textView2.setText(String.format("right\nangle:%d\nlength:%.1f\nx:%.1f,y:%.1f", i1, v, x, y));
-                    write(cmdStartEnd[0] + cmdTurn);
-                    write( dat);
-                    write( cmdStartEnd[1]);
+//                    write(cmdStartEnd[0] + cmdTurn);
+//                    write( dat);
+//                    write( cmdStartEnd[1]);
+                    send8Cmd(commands.Set_Turn,(int)(x/2));
                 }
             }
         });

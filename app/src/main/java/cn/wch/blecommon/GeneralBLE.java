@@ -315,10 +315,8 @@ public class GeneralBLE extends BLEBaseActivity {
     }
 
     protected enum commands {
-        hello, Get_Mpu6050,
-        Get_Pic, Set_Mode,
-        Para_Adj, Set_Angle,
-        Set_Turn, Set_Balance, Get_Para
+        hello, Get_Mpu6050, Get_Pic, Set_Mode,
+        Para_Adj, Set_Angle, Set_Turn, Set_Balance, Get_Para
     }
 
     private final byte cmdStart = (byte) 0x97;
