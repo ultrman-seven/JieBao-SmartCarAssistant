@@ -27,6 +27,17 @@ public class pidUnit extends ConstraintLayout {
         return r;
     }
 
+    public void setPara(int p1,int p2,int p3){
+        p.setVal(p1);
+        i.setVal(p2);
+        d.setVal(p3);
+    }
+    public void setPara(int[] para){
+        p.setVal(para[0]);
+        i.setVal(para[1]);
+        d.setVal(para[2]);
+    }
+
     public void setName(String name)
     {
         t.setText(name);

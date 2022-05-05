@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 public class EditTextSeekbarUnit extends ConstraintLayout {
     private TextView text;
     private SeekBar bar;
+    public EditText editText;
     private int bit_count;
 
     public EditTextSeekbarUnit(Context context, AttributeSet attributeSet) {
@@ -28,7 +29,7 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
         LayoutInflater.from(context).inflate(R.layout.edit_text_seekbar, this);
 
         TypedArray ta = context.obtainStyledAttributes(attributeSet, R.styleable.e_s);
-        EditText editText = findViewById(R.id.unit_edit);
+        editText = findViewById(R.id.unit_edit);
         bar = findViewById(R.id.unit_bar);
         text = findViewById(R.id.unit_text);
 
@@ -88,5 +89,6 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
 
     public void setVal(int v) {
         bar.setProgress(v);
+        editText.setText(String.valueOf(v / Math.pow(10, bit_count)));
     }
 }
