@@ -12,9 +12,10 @@ import android.widget.Toast;
 import com.gcssloop.widget.RockerView;
 
 import java.text.Format;
+import java.util.Vector;
 
 public class ControlAvtivity extends GeneralBLE {
-    private SeekBar bar;
+    private SeekBar angle;
     private RockerView left;
     private RockerView right;
     private TextView textView;
@@ -35,7 +36,7 @@ public class ControlAvtivity extends GeneralBLE {
         textView2 = findViewById(R.id.rockText2);
 
         Button start = findViewById(R.id.startRock);
-        SeekBar angle = findViewById(R.id.seekBar_angle);
+        angle = findViewById(R.id.seekBar_angle);
         TextView textAngle = findViewById(R.id.text_angle);
 
         angle.setVisibility(View.INVISIBLE);
@@ -56,9 +57,11 @@ public class ControlAvtivity extends GeneralBLE {
                     textView2.setVisibility(View.VISIBLE);
                     angle.setVisibility(View.VISIBLE);
                     textAngle.setVisibility(View.VISIBLE);
-                    c = getCurrentCharacteristic(ser, tx);
+//                    c = getCurrentCharacteristic(ser, tx);
 //                    write(c, cmdStartEnd[0] + "0303" + cmdStartEnd[1]);
-                    send8Cmd(commands.Set_Mode,3);
+                    enableNotify(true);
+                    send8Cmd(commands.Set_Mode, 3);
+                    send8Cmd(commands.Get_Para, 0);
                 } else Toast.makeText(ControlAvtivity.this, "蓝牙未连接！！", Toast.LENGTH_SHORT).show();
             }
         });
@@ -68,7 +71,7 @@ public class ControlAvtivity extends GeneralBLE {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 double val = (double) i / 10;
                 textAngle.setText(String.format("当前平衡点角度：%.1f", val));
-                send8Cmd(commands.Set_Balance,i);
+                send32Cmd(commands.Set_Balance, i);
             }
 
             @Override
@@ -93,7 +96,7 @@ public class ControlAvtivity extends GeneralBLE {
                     case RockerView.EVENT_ACTION:
                         textView.setText(String.format("left\nangle:%d\nlength:%.1f\nx:%.1f,y:%.1f", i1, v, x, y));
 
-                        send8Cmd(commands.Set_Angle,(int)(y/2));
+                        send8Cmd(commands.Set_Angle, (int) (y / 2));
 //                        byte dat[] = {(byte) (y / 2)};
 //                        write( cmdStartEnd[0] + cmdSpeed);
 //                        write( dat);
@@ -102,7 +105,7 @@ public class ControlAvtivity extends GeneralBLE {
                     case RockerView.EVENT_CLOCK:
                         if (left.getVisibility() == View.VISIBLE && v < 1) {
 //                            write(cmdStartEnd[0] + cmdSpeed + "00" + cmdStartEnd[1]);
-                            send8Cmd(commands.Set_Angle,0);
+                            send8Cmd(commands.Set_Angle, 0);
                         }
                         break;
                     default:
@@ -124,9 +127,32 @@ public class ControlAvtivity extends GeneralBLE {
 //                    write(cmdStartEnd[0] + cmdTurn);
 //                    write( dat);
 //                    write( cmdStartEnd[1]);
-                    send8Cmd(commands.Set_Turn,(int)(x/2));
+                    send8Cmd(commands.Set_Turn, (int) (x / 2));
                 }
             }
         });
     }
+
+
+    @Override
+    protected void updateValueTextView(byte[] data) {
+        super.updateValueTextView(data);
+        if (data == null)
+            return;
+        int len = data.length;
+        if(len!=9)
+            return;
+        if (data[0]==(byte) 0x97 && data[len-1]==(byte) 0xa5) {
+            byte b0 = (byte) data[3];
+            byte b1 = (byte) data[4];
+            byte b2 = (byte) data[5];
+            byte b3 = (byte) data[6];
+            int tmp = b3 |
+                    (b2 & 0xFF) << 8 |
+                    (b1 & 0xFF) << 16 |
+                    (b0 & 0xFF) << 24;
+            angle.setProgress(tmp);
+        }
+    }
+
 }

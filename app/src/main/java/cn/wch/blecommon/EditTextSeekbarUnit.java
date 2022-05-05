@@ -35,13 +35,13 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
         text.setText(ta.hasValue(R.styleable.e_s_edit_txt)
                 ? ta.getString(R.styleable.e_s_edit_txt) : "k");
 
-        bit_count =ta.getInteger(R.styleable.e_s_bit_num,0);
+        bit_count = ta.getInteger(R.styleable.e_s_bit_num, 0);
 
-        bar.setMax(ta.getInteger(R.styleable.e_s_max,50));
+        bar.setMax(ta.getInteger(R.styleable.e_s_max, 50));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            bar.setMin(ta.getInteger(R.styleable.e_s_min,-50));
+            bar.setMin(ta.getInteger(R.styleable.e_s_min, -50));
         }
-        bar.setProgress(ta.getInteger(R.styleable.e_s_position,0));
+        bar.setProgress(ta.getInteger(R.styleable.e_s_position, 0));
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -55,7 +55,7 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                editText.setText(String.valueOf(bar.getProgress()/Math.pow(10,bit_count)));
+                editText.setText(String.valueOf(bar.getProgress() / Math.pow(10, bit_count)));
             }
         });
         editText.addTextChangedListener(new TextWatcher() {
@@ -73,7 +73,7 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
             public void afterTextChanged(Editable editable) {
                 bar.setProgress((int)
                         (Double.parseDouble(editText.getText().toString().trim())
-                                *Math.pow(10,bit_count)));
+                                * Math.pow(10, bit_count)));
             }
         });
     }
@@ -84,5 +84,9 @@ public class EditTextSeekbarUnit extends ConstraintLayout {
 
     public int getVal() {
         return bar.getProgress();
+    }
+
+    public void setVal(int v) {
+        bar.setProgress(v);
     }
 }

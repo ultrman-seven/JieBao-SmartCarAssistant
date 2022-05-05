@@ -96,4 +96,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.189" />
 
+    <Button
+        android:id="@+id/button_get_para"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="获取参数"
+        app:layout_constraintBottom_toTopOf="@+id/button_para"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,5 +63,19 @@ public class ParaActivity extends GeneralBLE {
                 write(cmdStartEnd[1]);
             }
         });
+
+        Button get = findViewById(R.id.button_get_para);
+        get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                enableNotify(true);
+                send8Cmd(commands.Get_Para,1);
+            }
+        });
+    }
+
+    @Override
+    protected void updateValueTextView(byte[] data) {
+        super.updateValueTextView(data);
     }
 }
